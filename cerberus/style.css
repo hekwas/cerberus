@@ -1,0 +1,135 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* AMBIENT BACKGROUND ANIMATION */
+.ambient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 600px;
+    height: 600px;
+    background: #f0f0f0; /* Very soft light grey to maintain white aesthetic */
+    top: -100px;
+    left: -100px;
+    animation-duration: 12s;
+}
+
+.orb-2 {
+    width: 800px;
+    height: 800px;
+    background: #f8f8f8;
+    bottom: -200px;
+    right: -100px;
+    animation-duration: 18s;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 500px;
+    height: 500px;
+    background: #e8e8e8;
+    top: 40%;
+    left: 40%;
+    animation-duration: 15s;
+    animation-delay: -2s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 50px) scale(1.1); }
+}
+
+/* TOP BAR */
+.top-bar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+    display: flex; justify-content: center; align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    z-index: 100;
+}
+
+.text-logo { 
+    height: 100px; width: auto; 
+    animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+}
+
+/* MAIN CONTENT */
+.content-wrapper { 
+    flex: 1; display: flex; justify-content: center; align-items: center; 
+    padding-top: 120px; position: relative; z-index: 10; 
+}
+
+.center-stage { 
+    display: flex; flex-direction: column; align-items: center; gap: 4rem; 
+}
+
+.main-logo {
+    width: 350px; max-width: 85vw; height: auto;
+    /* More intense glowing animation */
+    animation: intenseGlowFade 3.5s ease-in-out infinite alternate;
+}
+
+.coming-soon-text {
+    font-size: 2.5rem; /* Made the text significantly bigger */
+    letter-spacing: 0.5em; 
+    color: #333; 
+    font-weight: 200; /* Thin font for elegance */
+    opacity: 0;
+    text-transform: uppercase;
+    animation: fadeInUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+}
+
+/* ANIMATIONS */
+@keyframes intenseGlowFade {
+    0% { 
+        opacity: 0.75; 
+        filter: drop-shadow(0 0 20px rgba(180, 180, 180, 0.5)) scale(0.98); 
+    }
+    100% { 
+        opacity: 1; 
+        /* Distinct grey aura with a silver/metallic feel */
+        filter: drop-shadow(0 0 40px rgba(130, 130, 130, 0.7)) drop-shadow(0 0 70px rgba(160, 160, 160, 0.4)) scale(1.03); 
+    }
+}
+
+@keyframes fadeInDown { 
+    from { opacity: 0; transform: translateY(-30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+@keyframes fadeInUp { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
